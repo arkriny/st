@@ -388,6 +388,9 @@ mousereport(XEvent *e)
 		/* Only buttons 1 through 11 can be encoded */
 		if (btn < 1 || btn > 11)
 			return;
+		/* Never report the scroll wheel */
+		if (btn == 4 || btn == 5)
+			return;
 		if (e->type == ButtonRelease) {
 			/* MODE_MOUSEX10: no button release reporting */
 			if (IS_SET(MODE_MOUSEX10))
